@@ -1,0 +1,74 @@
+version: '3'
+
+services:
+    postgres:
+        container_name: 'php-challenge-postgres'
+        build:
+            context: ./.docker/postgres
+            dockerfile: Dockerfile
+        restart: always
+        shm_size: 4g
+        ports:
+            - 5445:5432
+        volumes:
+            - "./.docker/postgres/data:/var/lib/postgresql/data:rw"
+        environment:
+            - POSTGRES_DB=php_challenge
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=admin
+            - PGDATA=/var/lib/postgresql/data
+            - POSTGRES_HOST_AUTH_METHOD=trust
+
+    php:
+        build: .docker/php
+        container_name: 'php-challenge-php'
+        volumes:
+            - .:/var/www/html/php-challenge
+        links:
+            - postgres
+        depends_on:
+            - php-build
+
+    php-build:
+        image: php
+        build: .docker/php
+        container_name: 'php-challenge-php-build'
+        volumes:
+            - .:/var/www/html/php-challenge
+        links:
+            - postgres
+        command: >
+            bash -c "cd /var/www/html/php-challenge && composer setup"
+
+    php-worker:
+        image: php
+        build: .docker/php
+        container_name: 'php-challenge-php-worker'
+        volumes:
+            - .:/var/www/html/php-challenge
+        links:
+            - postgres
+        depends_on:
+            - php-build
+        command: >
+            bash -c "cd /var/www/html/php-challenge && php artisan queue:work"
+
+    nginx:
+        build:
+            context: .docker
+            dockerfile: nginx/Dockerfile
+        container_name: 'php-challenge-nginx'
+        ports:
+            - 8019:80
+        depends_on:
+            - php
+        volumes:
+            - .:/var/www/html/php-challenge
+
+volumes:
+    postgres:
+        driver: local
+    php:
+        driver: local
+    redis:
+        driver: local

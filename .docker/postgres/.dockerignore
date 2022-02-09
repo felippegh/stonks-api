@@ -1,0 +1,8 @@
+data_old/*
+data/*
+**/data_old
+**/data
+**/node_modules
+node_modules
+.docker/*/data
+**.docker/*/data/*
