@@ -28,7 +28,7 @@ class StockCreatedMail extends Mailable implements ShouldQueue {
      */
     public function build() {
         return $this->subject("Stock Notification")
-                    ->from('system@jobsity.com', 'Jobsity Notification System')
+                    ->from('system@stock.com', 'Notification System')
                     ->to($this->stock->user->email)
                     ->markdown('stock_created_mail')
                     ->with([
