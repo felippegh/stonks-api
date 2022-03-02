@@ -44,11 +44,11 @@ MAIL_PASSWORD=[Your Mailtrap Password]
 MAIL_ENCRYPTION=tls
 ```
 - Run `docker-compose up`
-- Wait the php-challenge-php-build process finishes
+- Wait the laravel-challenge-php-build process finishes
 
 ### Testing
 
-- Run `docker exec -it php-challenge-php bash`
+- Run `docker exec -it laravel-challenge-php bash`
 - Run `php artisan test`
 
 ### Using the APP
