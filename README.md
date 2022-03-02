@@ -1,4 +1,8 @@
+<div align="center">
+
 ![stonks image](./resources/views/images/stonks.jpeg)
+
+</div>
 
 ## PHP Challenge - Laravel version
 
