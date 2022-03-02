@@ -7,4 +7,4 @@ RUN openssl req -x509 -nodes -days 365 -subj "/C=CA/ST=QC/O=Company, Inc./CN=myd
 RUN rm /etc/nginx/conf.d/default.conf
 COPY /nginx/nginx.conf /etc/nginx/conf.d
 
-WORKDIR /var/www/html/php-challenge
+WORKDIR /var/www/html/laravel-challenge
