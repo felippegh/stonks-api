@@ -4,9 +4,7 @@
 
 </div>
 
-## PHP Challenge - Laravel version
-
-This is a Laravel version of the take-home challenge for PHP Developers from Jobsity.
+## Stonks Challenge - Laravel version
 
 ### Features
 
@@ -48,11 +46,11 @@ MAIL_PASSWORD=[Your Mailtrap Password]
 MAIL_ENCRYPTION=tls
 ```
 - Run `docker-compose up`
-- Wait the laravel-challenge-php-build process finishes
+- Wait the stonks-api-php-build process finishes
 
 ### Testing
 
-- Run `docker exec -it laravel-challenge-php bash`
+- Run `docker exec -it stonks-api-php bash`
 - Run `php artisan test`
 
 ### Using the APP
@@ -67,9 +65,8 @@ These credentials must be used in the login endpoint to authenticate into the sy
 
 After that, you can proceed using all available endpoints. 
 
-The available endpoints can be found [here](https://documenter.getpostman.com/view/15585199/UVXeqxZj)
-
-
+The available endpoints can be found
+<a href="https://documenter.getpostman.com/view/15585199/UVsHUTjL" target="_blank">here</a>.
 
 
 
