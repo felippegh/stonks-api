@@ -28,7 +28,7 @@ RUN addgroup -S dev &&\
 USER dev
 
 # Setup document root
-RUN mkdir -p /var/www/html/laravel-challenge
+RUN mkdir -p /var/www/html/stonks-api
 
 # Set root dir
-WORKDIR /var/www/html/laravel-challenge
+WORKDIR /var/www/html/stonks-api
